@@ -24,13 +24,6 @@ export KCPPFLAGS=' -O3'
 export CONFIG_SECTION_MISMATCH_WARN_ONLY=y
 
 make -C $(pwd) O=$(pwd)/out clean -j$(nproc) && make -C $(pwd) O=$(pwd)/out mrproper -j$(nproc)
-make -C $(pwd) O=$(pwd)/out -j$(nproc) a22_vigus_defconfig
+make -C $(pwd) O=$(pwd)/out -j$(nproc) a32_lineage_defconfig
 clear
 make -s -C $(pwd) O=$(pwd)/out KCFLAGS=' -w -pipe -O3' CONFIG_SECTION_MISMATCH_WARN_ONLY=y -j$(nproc)
-
-read -p "copy to kornol directory? (are u vigus?) y/n   " choice
-case "$choice" in 
-  y|Y ) cp out/arch/arm64/boot/Image ~/Downloads/buildkernal/Image;;
-  n|N ) echo "k";;
-  * ) echo "nvm";;
-esac
